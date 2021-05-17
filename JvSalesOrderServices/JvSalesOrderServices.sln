@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JvSalesOrderServices", "JvAutenticacionServices\JvSalesOrderServices.csproj", "{13CAD03A-594F-4BEC-A9FC-4F621C1179DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JvSalesOrderServices", "JvSalesOrderServices\JvSalesOrderServices.csproj", "{13CAD03A-594F-4BEC-A9FC-4F621C1179DC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4070033C-BAE0-4F13-BB50-CBB7CCC77BEA} = {4070033C-BAE0-4F13-BB50-CBB7CCC77BEA}
 	EndProjectSection
