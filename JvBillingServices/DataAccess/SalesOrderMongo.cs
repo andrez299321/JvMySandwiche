@@ -12,15 +12,15 @@ using Utils.GlobalEntity;
 
 namespace DataAccess
 {
-    public class PaymentMongo : MongoBase<Payment>, IMongo
+    public class BillingMongo : MongoBase<Billing>, IMongo
     {
-        public PaymentMongo(EnumMongo databaseName, IOptions<SecretSetting> options) : base(databaseName,options)
+        public BillingMongo(EnumMongo databaseName, IOptions<SecretSetting> options) : base(databaseName, options)
         {
         }
 
         public async Task<Object> Get(int id)
         {
-            var filter = Builders<Payment>.Filter.Eq(c => c.id, id);
+            var filter = Builders<Billing>.Filter.Eq(c => c.id, id);
             return await _collection.Find(filter).FirstOrDefaultAsync();
         }
 
@@ -28,7 +28,7 @@ namespace DataAccess
 
         public async Task<bool> Delete(int id)
         {
-            var filter = Builders<Payment>.Filter.Eq(c => c.id, id);
+            var filter = Builders<Billing>.Filter.Eq(c => c.id, id);
             var result = await _collection.DeleteOneAsync(filter);
             return (result.DeletedCount == 1);
         }
@@ -37,11 +37,11 @@ namespace DataAccess
         {
             try
             {
-                var payment = (Payment) entity;
-                await _collection.InsertOneAsync(payment);
+                var billing = (Billing) entity;
+                await _collection.InsertOneAsync(billing);
                 return true;
             }
-            catch(Exception ex)
+            catch
             {
                 return false;
             }
@@ -49,18 +49,18 @@ namespace DataAccess
 
         public async Task<IEnumerable<object>> Get()
         {
-            var payment = await _collection.Find(_ => true).ToListAsync();
-            return payment;
+            var client = await _collection.Find(_ => true).ToListAsync();
+            return client;
         }
         
 
         public async Task<bool> Update(int id, object c)
         {
-            var payment  = (Payment) c;
-            var filter = Builders<Payment>.Filter.Eq(c => c.id, id);
-            var update = Builders<Payment>.Update
-                .Set(c => c.Name, payment.Name)
-                .Set(c => c.State, payment.State);
+            var billing  = (Billing) c;
+            var filter = Builders<Billing>.Filter.Eq(c => c.id, id);
+            var update = Builders<Billing>.Update
+                .Set(c => c.Name, billing.Name)
+                .Set(c => c.State, billing.State);
             var result = await _collection.UpdateOneAsync(filter, update);
             return (result.ModifiedCount == 1);
         }

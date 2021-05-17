@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
 using Utils.GlobalEntity;
+using Microsoft.Extensions.Options;
 
 namespace DataAccess.Base
 {
@@ -15,8 +15,8 @@ namespace DataAccess.Base
         public MongoBase(EnumMongo name, IOptions<SecretSetting> options)
         {
             string databaseName = Enum.GetName(typeof(EnumMongo), name).ToString().ToLower();
-            var payment = new MongoClient(options.Value.MongoDB);
-            var database = payment.GetDatabase(databaseName);
+            var client = new MongoClient(options.Value.MongoDB);
+            var database = client.GetDatabase(databaseName);
             var collection = database.GetCollection<T>(nameof(T));
             _collection = collection;
         }
