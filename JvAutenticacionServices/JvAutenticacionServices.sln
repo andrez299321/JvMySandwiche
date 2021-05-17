@@ -3,31 +3,35 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JvAutenticacionServices", "JvAutenticacionServices\JvAutenticacionServices.csproj", "{13CAD03A-594F-4BEC-A9FC-4F621C1179DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JvAutenticacionServices", "JvAutenticacionServices\JvAutenticacionServices.csproj", "{13CAD03A-594F-4BEC-A9FC-4F621C1179DC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4070033C-BAE0-4F13-BB50-CBB7CCC77BEA} = {4070033C-BAE0-4F13-BB50-CBB7CCC77BEA}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BussinesLayer", "BussinesLayer", "{1E7AB26D-318B-49DF-BE64-772061941F45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicsBusiness", "BusinessLogic\LogicsBusiness.csproj", "{4070033C-BAE0-4F13-BB50-CBB7CCC77BEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicsBusiness", "BusinessLogic\LogicsBusiness.csproj", "{4070033C-BAE0-4F13-BB50-CBB7CCC77BEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractsBusiness", "ContractsBusiness\ContractsBusiness.csproj", "{F60BFF0E-A782-4D4D-93B6-E08826E27AA1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitysBusiness", "EntityBusiness\EntitysBusiness.csproj", "{7ADD71C2-80C9-4A94-8FE6-95AC45335378}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContractsBusiness", "ContractsBusiness\ContractsBusiness.csproj", "{F60BFF0E-A782-4D4D-93B6-E08826E27AA1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfraestructureLayer", "InfraestructureLayer", "{A43ED7C4-1AFA-49C8-BF5E-56D348CF4924}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{65488C8B-A1B2-4FFA-AD18-2D5B6AC875ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{65488C8B-A1B2-4FFA-AD18-2D5B6AC875ED}"
+	ProjectSection(ProjectDependencies) = postProject
+		{02D8E59E-D968-4910-B1D5-9E7FF0455347} = {02D8E59E-D968-4910-B1D5-9E7FF0455347}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalServices", "ExternalServices\ExternalServices.csproj", "{FDF4FF6C-ED95-4482-9FC2-656BE5913825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalServices", "ExternalServices\ExternalServices.csproj", "{FDF4FF6C-ED95-4482-9FC2-656BE5913825}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCuttings", "CrossCuttings", "{3F266F95-85A6-4209-8C20-C611A09EF668}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraestructureContracts", "ContractsInfraestructure\InfraestructureContracts.csproj", "{02D8E59E-D968-4910-B1D5-9E7FF0455347}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfraestructureContracts", "ContractsInfraestructure\InfraestructureContracts.csproj", "{02D8E59E-D968-4910-B1D5-9E7FF0455347}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{D86B3880-FBBD-433F-9FC8-AD202B5FC105}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", "Utils\Utils.csproj", "{D86B3880-FBBD-433F-9FC8-AD202B5FC105}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServicesLayer", "ServicesLayer", "{A1D0BB37-67F4-4756-90D2-F7A2086241CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitysServices", "EntitysServices\EntitysServices.csproj", "{E7901106-38DA-4CC9-88A9-140EDE2227D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntitysServices", "EntitysServices\EntitysServices.csproj", "{E7901106-38DA-4CC9-88A9-140EDE2227D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +51,6 @@ Global
 		{F60BFF0E-A782-4D4D-93B6-E08826E27AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F60BFF0E-A782-4D4D-93B6-E08826E27AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F60BFF0E-A782-4D4D-93B6-E08826E27AA1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7ADD71C2-80C9-4A94-8FE6-95AC45335378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7ADD71C2-80C9-4A94-8FE6-95AC45335378}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7ADD71C2-80C9-4A94-8FE6-95AC45335378}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7ADD71C2-80C9-4A94-8FE6-95AC45335378}.Release|Any CPU.Build.0 = Release|Any CPU
 		{65488C8B-A1B2-4FFA-AD18-2D5B6AC875ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{65488C8B-A1B2-4FFA-AD18-2D5B6AC875ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65488C8B-A1B2-4FFA-AD18-2D5B6AC875ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -79,12 +79,11 @@ Global
 		{13CAD03A-594F-4BEC-A9FC-4F621C1179DC} = {A1D0BB37-67F4-4756-90D2-F7A2086241CE}
 		{4070033C-BAE0-4F13-BB50-CBB7CCC77BEA} = {1E7AB26D-318B-49DF-BE64-772061941F45}
 		{F60BFF0E-A782-4D4D-93B6-E08826E27AA1} = {1E7AB26D-318B-49DF-BE64-772061941F45}
-		{7ADD71C2-80C9-4A94-8FE6-95AC45335378} = {1E7AB26D-318B-49DF-BE64-772061941F45}
 		{65488C8B-A1B2-4FFA-AD18-2D5B6AC875ED} = {A43ED7C4-1AFA-49C8-BF5E-56D348CF4924}
 		{FDF4FF6C-ED95-4482-9FC2-656BE5913825} = {A43ED7C4-1AFA-49C8-BF5E-56D348CF4924}
 		{02D8E59E-D968-4910-B1D5-9E7FF0455347} = {A43ED7C4-1AFA-49C8-BF5E-56D348CF4924}
 		{D86B3880-FBBD-433F-9FC8-AD202B5FC105} = {3F266F95-85A6-4209-8C20-C611A09EF668}
-		{E7901106-38DA-4CC9-88A9-140EDE2227D6} = {A1D0BB37-67F4-4756-90D2-F7A2086241CE}
+		{E7901106-38DA-4CC9-88A9-140EDE2227D6} = {1E7AB26D-318B-49DF-BE64-772061941F45}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0522A1F5-BF92-4C8C-A29D-906E88500D00}

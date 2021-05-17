@@ -1,3 +1,7 @@
+using ContractsBusiness;
+using DataAccess;
+using InfraestructureContracts.DataAccessContract;
+using LogicsBusiness;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +30,7 @@ namespace JvAutenticacionServices
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            DependencyDataAccess(services);
             DependencySettings(services);
             DependencyBusiness(services);
             DependencyExternalServices(services);
@@ -61,6 +66,13 @@ namespace JvAutenticacionServices
             });
         }
 
+        private void DependencyDataAccess(IServiceCollection services)
+        {
+
+            services.AddTransient<IFactoryMongo, FactoryMongo>();
+
+        }
+
         private void DependencyExternalServices(IServiceCollection services)
         {
 
@@ -71,7 +83,7 @@ namespace JvAutenticacionServices
         private void DependencyBusiness(IServiceCollection services)
         {
 
-            /*services.AddTransient<IPaymentContract, PaymentContractBL>();*/
+            services.AddTransient<IClientBL, ClientBL>();
         }
 
         private void DependencySettings(IServiceCollection services)
