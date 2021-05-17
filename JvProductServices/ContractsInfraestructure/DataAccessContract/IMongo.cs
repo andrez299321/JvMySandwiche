@@ -9,7 +9,7 @@ namespace InfraestructureContracts.DataAccessContract
     {
         Task<Object> Get(int id);
         Task<IEnumerable<Object>> Get();
-        Task<bool> Update(int id, Object client);
+        Task<bool> Update(int id, Object product);
         Task<bool> Delete(int id);
         Task<bool> Create(Object id);
 

@@ -7,12 +7,14 @@ using DataAccess.Entity;
 using InfraestructureContracts.DataAccessContract;
 using DataAccess.Base;
 using Utils.EnumResourse;
+using Microsoft.Extensions.Options;
+using Utils.GlobalEntity;
 
 namespace DataAccess
 {
     public class ProductMongo : MongoBase<Product>, IMongo
     {
-        public ProductMongo(EnumMongo databaseName) : base(databaseName)
+        public ProductMongo(EnumMongo databaseName, IOptions<SecretSetting> options) : base(databaseName,options)
         {
         }
 
@@ -39,7 +41,7 @@ namespace DataAccess
                 await _collection.InsertOneAsync(product);
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }
@@ -47,8 +49,8 @@ namespace DataAccess
 
         public async Task<IEnumerable<object>> Get()
         {
-            var client = await _collection.Find(_ => true).ToListAsync();
-            return client;
+            var product = await _collection.Find(_ => true).ToListAsync();
+            return product;
         }
         
 

@@ -22,7 +22,7 @@ namespace JvAutenticacionServices.Controllers
         /// <param name="authInfo">The authentication information.</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("CreateUser")]
+        [Route("CreateProduct")]
         public IActionResult CreateProduct([FromBody] ProductRequest product)
         {
             return Ok(_product.CreateProduct(product));

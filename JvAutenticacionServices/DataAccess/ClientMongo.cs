@@ -7,12 +7,14 @@ using DataAccess.Entity;
 using InfraestructureContracts.DataAccessContract;
 using DataAccess.Base;
 using Utils.EnumResourse;
+using Utils.GlobalEntity;
+using Microsoft.Extensions.Options;
 
 namespace DataAccess
 {
     public class ClientMongo : MongoBase<Client>, IMongo
     {
-        public ClientMongo(EnumMongo databaseName) : base(databaseName)
+        public ClientMongo(EnumMongo databaseName, IOptions<SecretSetting> options) : base(databaseName,options)
         {
         }
 

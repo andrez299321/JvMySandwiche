@@ -3,10 +3,12 @@ using DataAccess;
 using DataAccess.Entity;
 using EntitysServices;
 using InfraestructureContracts.DataAccessContract;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Utils.EnumResourse;
+using Utils.GlobalEntity;
 
 namespace LogicsBusiness
 {
@@ -14,15 +16,20 @@ namespace LogicsBusiness
     {
         IFactoryMongo _factoryMongo;
         IMongo _DataAccessMongo;
-        public ProductBL(IFactoryMongo factoryMongo)
+        public ProductBL(IFactoryMongo factoryMongo, IOptions<SecretSetting> options)
         {
             _factoryMongo = factoryMongo;
-            _DataAccessMongo = _factoryMongo.GetMongoObject(EnumMongo.ProductMongo);
+            _DataAccessMongo = _factoryMongo.GetMongoObject(EnumMongo.ProductMongo, options);
         }
 
         public ResponseBase CreateProduct(ProductRequest product)
         {
-            _DataAccessMongo.Create(product);
+
+            _DataAccessMongo.Create(new Product() { 
+                id = product.Id,
+                Name = product.Name,
+                State = product.State
+            });
             return ResponseSuccess();
         }
 

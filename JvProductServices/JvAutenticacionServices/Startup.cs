@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Utils.GlobalEntity;
 
 namespace JvAutenticacionServices
 {
@@ -88,8 +89,9 @@ namespace JvAutenticacionServices
 
         private void DependencySettings(IServiceCollection services)
         {
-            /*services.Configure<AppSettings>(opt => Configuration.GetSection("AppSettings").Bind(opt));*/
-            
+            services.Configure<Connections>(opt => Configuration.GetSection("Connections").Bind(opt));
+            services.Configure<SecretSetting>(Configuration);
+
         }
         private void AddSwagger(IServiceCollection services)
         {

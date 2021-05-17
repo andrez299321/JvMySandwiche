@@ -3,10 +3,12 @@ using DataAccess;
 using DataAccess.Entity;
 using EntitysServices;
 using InfraestructureContracts.DataAccessContract;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Utils.EnumResourse;
+using Utils.GlobalEntity;
 
 namespace LogicsBusiness
 {
@@ -14,15 +16,27 @@ namespace LogicsBusiness
     {
         IFactoryMongo _factoryMongo;
         IMongo _DataAccessMongo;
-        public ClientBL(IFactoryMongo factoryMongo)
+        public ClientBL(IFactoryMongo factoryMongo, IOptions<SecretSetting> options)
         {
             _factoryMongo = factoryMongo;
-            _DataAccessMongo = _factoryMongo.GetMongoObject(EnumMongo.ClientMongo);
+            _DataAccessMongo = _factoryMongo.GetMongoObject(EnumMongo.ClientMongo,options);
         }
 
         public ResponseBase CreateUser(ClientRequest client)
         {
-            _DataAccessMongo.Create(client);
+            var result = _DataAccessMongo.Create(new Client() { 
+                id =client.Id,
+                Identification = client.Identification,
+                Name = client.Name,
+                LastName = client.LastName,
+                Celphone = client.Celphone,
+                Password = client.Password
+            }).GetAwaiter().GetResult();
+
+            if (result == false) 
+            {
+                return ResponseError("Error en la insercion");
+            }
             return ResponseSuccess();
         }
 

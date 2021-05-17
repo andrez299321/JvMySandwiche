@@ -6,7 +6,7 @@ namespace ContractsBusiness
 {
     public interface IProductBL
     {
-        ResponseBase CreateProduct(ProductRequest client);
+        ResponseBase CreateProduct(ProductRequest product);
 
         ResponseBase DeleteProduct(int id);
 
