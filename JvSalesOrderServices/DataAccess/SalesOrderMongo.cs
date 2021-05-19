@@ -16,6 +16,7 @@ namespace DataAccess
     {
         public SalesOrderMongo(EnumMongo databaseName, IOptions<SecretSetting> options) : base(databaseName, options)
         {
+            collectionMongo(nameof(SalesOrder));
         }
 
         public async Task<Object> Get(int id)
