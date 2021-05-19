@@ -16,6 +16,7 @@ namespace DataAccess
     {
         public ClientMongo(EnumMongo databaseName, IOptions<SecretSetting> options) : base(databaseName,options)
         {
+            collectionMongo(nameof(Client));
         }
 
         public async Task<Object> Get(int id)

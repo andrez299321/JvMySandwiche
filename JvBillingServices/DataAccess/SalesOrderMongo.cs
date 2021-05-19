@@ -16,6 +16,7 @@ namespace DataAccess
     {
         public BillingMongo(EnumMongo databaseName, IOptions<SecretSetting> options) : base(databaseName, options)
         {
+            collectionMongo(nameof(Billing));
         }
 
         public async Task<Object> Get(int id)
