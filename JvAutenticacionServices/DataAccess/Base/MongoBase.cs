@@ -20,6 +20,7 @@ namespace DataAccess.Base
             string databaseName = Enum.GetName(typeof(EnumMongo), name).ToString().ToLower();
             var payment = new MongoClient(options.Value.MongoDB);
             //comments ++
+            // add more comments ++++
             _database = payment.GetDatabase(databaseName);
         }
 
