@@ -11,13 +11,19 @@ namespace DataAccess.Base
 {
     public class MongoBase<T>
     {
-        public readonly IMongoCollection<T> _collection; 
+        public IMongoCollection<T> _collection; 
+        
+        private readonly IMongoDatabase _database;
+
         public MongoBase(EnumMongo name, IOptions<SecretSetting> options)
         {
             string databaseName = Enum.GetName(typeof(EnumMongo), name).ToString().ToLower();
             var payment = new MongoClient(options.Value.MongoDB);
-            var database = payment.GetDatabase(databaseName);
-            var collection = database.GetCollection<T>(nameof(T));
+            _database = payment.GetDatabase(databaseName);
+        }
+
+        public void collectionMongo(string name) {
+            var collection = _database.GetCollection<T>(name);
             _collection = collection;
         }
         
