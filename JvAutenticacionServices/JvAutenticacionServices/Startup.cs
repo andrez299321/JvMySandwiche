@@ -1,5 +1,6 @@
 using ContractsBusiness;
 using DataAccess;
+using EntitysServices.GlobalEntity;
 using InfraestructureContracts.DataAccessContract;
 using LogicsBusiness;
 using Microsoft.AspNetCore.Builder;
@@ -15,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Utils.GlobalEntity;
 
 namespace JvAutenticacionServices
 {

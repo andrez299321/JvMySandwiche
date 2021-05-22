@@ -16,16 +16,32 @@ namespace JvAutenticacionServices.Controllers
             _client = client;
         }
 
-        /// <summary>
-        /// Authenticates the specified authentication information.
-        /// </summary>
-        /// <param name="authInfo">The authentication information.</param>
-        /// <returns></returns>
         [HttpPost]
         [Route("CreateUser")]
         public IActionResult CreateUser([FromBody] ClientRequest client)
         {
             return Ok(_client.CreateUser(client));
+        }
+
+        [HttpDelete]
+        [Route("DeleteUser")]
+        public IActionResult DeleteUser(int id)
+        {
+            return Ok(_client.DeleteUser(id));
+        }
+
+        [HttpPut]
+        [Route("UpdateUser")]
+        public IActionResult UpdateUser([FromBody] ClientRequest client,int id)
+        {
+            return Ok(_client.UpdateUser(id, client));
+        }
+
+        [HttpGet]
+        [Route("GetUser")]
+        public IActionResult GetUser(int id)
+        {
+            return Ok(_client.GetUser(id));
         }
     }
 }

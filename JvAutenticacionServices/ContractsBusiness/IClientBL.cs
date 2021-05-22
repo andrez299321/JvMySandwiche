@@ -13,6 +13,8 @@ namespace ContractsBusiness
         ResponseBase UpdateUser(int id, ClientRequest client);
 
         ResponseBase GetUser(int id);
-        
+
+        ResponseBase GetLogin(LoginRequest login);
+
     }
 }

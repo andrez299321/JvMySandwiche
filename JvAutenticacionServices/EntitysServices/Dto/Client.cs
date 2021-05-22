@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccess.Entity
+namespace Dto.Entity
 {
     public class Client : DTOBase
     {

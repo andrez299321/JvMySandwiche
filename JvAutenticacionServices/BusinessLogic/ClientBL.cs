@@ -1,14 +1,14 @@
 ﻿using ContractsBusiness;
 using DataAccess;
-using DataAccess.Entity;
+using Dto.Entity;
 using EntitysServices;
+using EntitysServices.GlobalEntity;
 using InfraestructureContracts.DataAccessContract;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Utils.EnumResourse;
-using Utils.GlobalEntity;
 
 namespace LogicsBusiness
 {
@@ -53,8 +53,14 @@ namespace LogicsBusiness
         }
         public ResponseBase GetUser(int id)
         {
-            _DataAccessMongo.Get(id);
-            return ResponseSuccess();
+            var result = _DataAccessMongo.Get(id).GetAwaiter().GetResult();
+            return ResponseSuccess("OK", result);
+        }
+
+        public ResponseBase GetLogin(LoginRequest login)
+        {
+            var result = _DataAccessMongo.Get().GetAwaiter().GetResult();
+            return ResponseSuccess("OK", result);
         }
     }
 }

@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccess.Entity;
 using InfraestructureContracts.DataAccessContract;
 using DataAccess.Base;
 using Utils.EnumResourse;
-using Utils.GlobalEntity;
 using Microsoft.Extensions.Options;
+using Dto.Entity;
+using EntitysServices.GlobalEntity;
 
 namespace DataAccess
 {
@@ -18,13 +18,12 @@ namespace DataAccess
         {
         }
 
-        public async Task<Object> Get(int id)
+        public async Task<object> Get(int id)
         {
             var filter = Builders<Client>.Filter.Eq(c => c.id, id);
-            return await _collection.Find(filter).FirstOrDefaultAsync();
+            var a = await _collection.Find(filter).FirstOrDefaultAsync();
+            return a;
         }
-
-       
 
         public async Task<bool> Delete(int id)
         {
@@ -47,12 +46,12 @@ namespace DataAccess
             }
         }
 
-        public async Task<IEnumerable<object>> Get()
+        public async Task<List<object>> Get()
         {
-            var client = await _collection.Find(_ => true).ToListAsync();
-            return client;
+            //var task = await _collection.Find(_ => true).ToListAsync();
+            //return task;
+            throw new NotImplementedException();
         }
-        
 
         public async Task<bool> Update(int id, object c)
         {
@@ -67,6 +66,6 @@ namespace DataAccess
             return (result.ModifiedCount == 1);
         }
 
-        
+
     }
 }
