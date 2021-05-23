@@ -13,6 +13,9 @@ namespace ContractsBusiness
         ResponseBase UpdateProduct(int id, ProductRequest product);
 
         ResponseBase GetProduct(int id);
+
+        ResponseBase GetAllProduct();
         
+
     }
 }

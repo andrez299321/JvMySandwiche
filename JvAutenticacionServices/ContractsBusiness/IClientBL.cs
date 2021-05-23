@@ -14,6 +14,9 @@ namespace ContractsBusiness
 
         ResponseBase GetUser(int id);
 
+        ResponseBase GetAllUser();
+        
+
         ResponseBase GetLogin(LoginRequest login);
 
     }

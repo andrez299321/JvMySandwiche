@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Options;
-using Utils.GlobalEntity;
+using EntitysServices.GlobalEntity;
 
 namespace DataAccess
 {
@@ -15,6 +15,9 @@ namespace DataAccess
             switch (type) {
                 case EnumMongo.BillingMongo :
                     return new BillingMongo(type, options);
+                break;
+                case EnumMongo.BillingDetailMongo:
+                    return new BillingDetailMongo(type, options);
                 break;
                 default:
                     return null;

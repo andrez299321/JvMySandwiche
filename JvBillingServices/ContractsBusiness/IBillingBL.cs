@@ -8,11 +8,11 @@ namespace ContractsBusiness
     {
         ResponseBase CreateBilling(BillingRequest client);
 
-        ResponseBase DeleteBilling(int id);
-
-        ResponseBase UpdateBilling(int id, BillingRequest billing);
+        ResponseBase UpdateStateBilling(int id, BillingRequest billing);
 
         ResponseBase GetBilling(int id);
-        
+
+        ResponseBase GetBillingAll();
+
     }
 }

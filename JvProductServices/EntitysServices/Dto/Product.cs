@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccess.Entity
+namespace EntitysServices.Dto
 {
-    public class Billing : DTOBase
+    public class Product : DTOBase
     {
         public string Name { get; set; }
+        public double Price { get; set; }
+        public string Description { get; set; }
         public bool State { get; set; }
     }
 }

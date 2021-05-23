@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Utils.EnumResourse
 {
-    public enum EnumMongo
+    public enum EnumStateBilling
     {
-        BillingMongo =1,
-        BillingDetailMongo = 2
+        Cancel = 1,
+        Finally = 2,
+        Active = 3   
     }
 }

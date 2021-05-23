@@ -16,16 +16,39 @@ namespace JvAutenticacionServices.Controllers
             _product = product;
         }
 
-        /// <summary>
-        /// Authenticates the specified authentication information.
-        /// </summary>
-        /// <param name="authInfo">The authentication information.</param>
-        /// <returns></returns>
         [HttpPost]
         [Route("CreateProduct")]
         public IActionResult CreateProduct([FromBody] ProductRequest product)
         {
             return Ok(_product.CreateProduct(product));
+        }
+
+        [HttpDelete]
+        [Route("DeleteProduct")]
+        public IActionResult DeleteProduct(int id)
+        {
+            return Ok(_product.DeleteProduct(id));
+        }
+
+        [HttpPut]
+        [Route("UpdateProduct")]
+        public IActionResult UpdateProduct([FromBody] ProductRequest product, int id)
+        {
+            return Ok(_product.UpdateProduct(id,product));
+        }
+
+        [HttpGet]
+        [Route("GetProduct")]
+        public IActionResult GetProduct(int id)
+        {
+            return Ok(_product.GetProduct(id));
+        }
+
+        [HttpGet]
+        [Route("GetAllProduct")]
+        public IActionResult GetAllProduct()
+        {
+            return Ok(_product.GetAllProduct());
         }
     }
 }

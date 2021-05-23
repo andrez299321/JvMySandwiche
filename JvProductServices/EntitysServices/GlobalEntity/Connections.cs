@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Utils.GlobalEntity
+namespace EntitysServices.GlobalEntity
 {
     public class Connections
     {

@@ -21,7 +21,7 @@ namespace JvAutenticacionServices.Controllers
         [Route("LoginUser")]
         public IActionResult CreateUser([FromBody] LoginRequest login)
         {
-            return null;
+            return Ok(_client.GetLogin(login));
         }
     }
 }

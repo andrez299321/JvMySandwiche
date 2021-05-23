@@ -20,8 +20,6 @@ namespace JvAutenticacionServices.Controllers
         [Route("CreateUser")]
         public IActionResult CreateUser([FromBody] ClientRequest client)
         {
-            //test branch
-            //test dos
             return Ok(_client.CreateUser(client));
         }
 
@@ -44,6 +42,13 @@ namespace JvAutenticacionServices.Controllers
         public IActionResult GetUser(int id)
         {
             return Ok(_client.GetUser(id));
+        }
+
+        [HttpGet]
+        [Route("GetAllUser")]
+        public IActionResult GetAllUser()
+        {
+            return Ok(_client.GetAllUser());
         }
     }
 }

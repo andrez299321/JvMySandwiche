@@ -7,6 +7,7 @@ using InfraestructureContracts.DataAccessContract;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Utils.EnumResourse;
 
@@ -59,8 +60,38 @@ namespace LogicsBusiness
 
         public ResponseBase GetLogin(LoginRequest login)
         {
-            var result = _DataAccessMongo.Get().GetAwaiter().GetResult();
-            return ResponseSuccess("OK", result);
+
+            var client = GetUsers();
+            var user = client.Where(x => x.Identification == login.User).FirstOrDefault();
+            if (user == null)
+            {
+                return ResponseDontAutorize();
+            }
+            else
+            {
+                if (!user.Password.Equals(login.Password))
+                {
+                    return ResponseDontAutorize();
+                }
+            }
+            return ResponseSuccess();
+        }
+
+        public ResponseBase GetAllUser()
+        {
+            var client =GetUsers();
+            return ResponseSuccess("OK", client);
+        }
+
+        private List<Client>  GetUsers() {
+
+            var result = _DataAccessMongo.Get();
+            var client = new List<Client>();
+            foreach (var item in result)
+            {
+                client.Add((Client)item);
+            }
+            return client;
         }
     }
 }

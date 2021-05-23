@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Utils.GlobalEntity;
 using Microsoft.Extensions.Options;
+using EntitysServices.GlobalEntity;
 
 namespace DataAccess.Base
 {

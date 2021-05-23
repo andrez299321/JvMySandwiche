@@ -1,9 +1,10 @@
-﻿using Microsoft.Extensions.Options;
+﻿using EntitysServices.GlobalEntity;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Utils.EnumResourse;
-using Utils.GlobalEntity;
+
 
 namespace InfraestructureContracts.DataAccessContract
 {

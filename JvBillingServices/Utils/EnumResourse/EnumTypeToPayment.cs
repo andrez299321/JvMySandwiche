@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Utils.EnumResourse
 {
-    public enum EnumMongo
+    public enum EnumTypeToPayment
     {
-        BillingMongo =1,
-        BillingDetailMongo = 2
+        Card =1
     }
 }

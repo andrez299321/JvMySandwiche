@@ -16,11 +16,7 @@ namespace JvAutenticacionServices.Controllers
             _billing = billing;
         }
 
-        /// <summary>
-        /// Authenticates the specified authentication information.
-        /// </summary>
-        /// <param name="authInfo">The authentication information.</param>
-        /// <returns></returns>
+
         [HttpPost]
         [Route("CreateBilling")]
         public IActionResult CreatesBilling([FromBody] BillingRequest billing)
@@ -28,5 +24,25 @@ namespace JvAutenticacionServices.Controllers
             return Ok(_billing.CreateBilling(billing));
         }
 
+        [HttpPost]
+        [Route("ChangeStateBilling")]
+        public IActionResult ChangeStateBilling([FromBody] BillingRequest billing)
+        {
+            return Ok(_billing.CreateBilling(billing));
+        }
+
+        [HttpGet]
+        [Route("GetBilling")]
+        public IActionResult GetBilling(int id)
+        {
+            return Ok(_billing.GetBilling(id));
+        }
+
+        [HttpGet]
+        [Route("GetBillingAll")]
+        public IActionResult GetBillingAll()
+        {
+            return Ok(_billing.GetBillingAll());
+        }
     }
 }

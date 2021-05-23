@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccess.Entity;
 using InfraestructureContracts.DataAccessContract;
 using DataAccess.Base;
 using Utils.EnumResourse;
 using Microsoft.Extensions.Options;
-using Utils.GlobalEntity;
+using EntitysServices.Dto;
+using EntitysServices.GlobalEntity;
 
 namespace DataAccess
 {
@@ -22,7 +22,8 @@ namespace DataAccess
         public async Task<Object> Get(int id)
         {
             var filter = Builders<Product>.Filter.Eq(c => c.id, id);
-            return await _collection.Find(filter).FirstOrDefaultAsync();
+            var result = await _collection.Find(filter).FirstOrDefaultAsync();
+            return result;
         }
 
        
@@ -48,19 +49,26 @@ namespace DataAccess
             }
         }
 
-        public async Task<IEnumerable<object>> Get()
+        public async Task<List<object>> Get()
         {
             var Product = await _collection.Find(_ => true).ToListAsync();
-            return Product;
+            var result = new List<object>();
+            foreach (var item in Product)
+            {
+                result.Add(item);
+            }
+            return result;
         }
-        
+
 
         public async Task<bool> Update(int id, object c)
         {
-            var Product  = (Product) c;
+            var Product = (Product)c;
             var filter = Builders<Product>.Filter.Eq(c => c.id, id);
             var update = Builders<Product>.Update
                 .Set(c => c.Name, Product.Name)
+                .Set(c => c.Description, Product.Description)
+                .Set(c => c.Price, Product.Price)
                 .Set(c => c.State, Product.State);
             var result = await _collection.UpdateOneAsync(filter, update);
             return (result.ModifiedCount == 1);

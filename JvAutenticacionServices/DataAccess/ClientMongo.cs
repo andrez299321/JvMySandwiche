@@ -22,8 +22,8 @@ namespace DataAccess
         public async Task<object> Get(int id)
         {
             var filter = Builders<Client>.Filter.Eq(c => c.id, id);
-            var a = await _collection.Find(filter).FirstOrDefaultAsync();
-            return a;
+            var result = await _collection.Find(filter).FirstOrDefaultAsync();
+            return result;
         }
 
         public async Task<bool> Delete(int id)
@@ -47,11 +47,14 @@ namespace DataAccess
             }
         }
 
-        public async Task<List<object>> Get()
+        public  List<object> Get()
         {
-            //var task = await _collection.Find(_ => true).ToListAsync();
-            //return task;
-            throw new NotImplementedException();
+            var task =  _collection.Find(_ => true).ToListAsync().GetAwaiter().GetResult();
+            var result = new List<object>();
+            foreach (var item in task) {
+                result.Add(item);
+            }
+            return result;
         }
 
         public async Task<bool> Update(int id, object c)

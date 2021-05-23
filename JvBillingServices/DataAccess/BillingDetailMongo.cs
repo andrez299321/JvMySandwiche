@@ -3,25 +3,25 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccess.Entity;
 using InfraestructureContracts.DataAccessContract;
 using DataAccess.Base;
 using Utils.EnumResourse;
 using Microsoft.Extensions.Options;
-using Utils.GlobalEntity;
+using EntitysServices.Dto;
+using EntitysServices.GlobalEntity;
 
 namespace DataAccess
 {
-    public class BillingMongo : MongoBase<Billing>, IMongo
+    public class BillingDetailMongo : MongoBase<BillingDetail>, IMongo
     {
-        public BillingMongo(EnumMongo databaseName, IOptions<SecretSetting> options) : base(databaseName, options)
+        public BillingDetailMongo(EnumMongo databaseName, IOptions<SecretSetting> options) : base(databaseName, options)
         {
-            collectionMongo(nameof(Billing));
+            collectionMongo(nameof(BillingDetail));
         }
 
         public async Task<Object> Get(int id)
         {
-            var filter = Builders<Billing>.Filter.Eq(c => c.id, id);
+            var filter = Builders<BillingDetail>.Filter.Eq(c => c.IdBilling, id);
             return await _collection.Find(filter).FirstOrDefaultAsync();
         }
 
@@ -29,7 +29,7 @@ namespace DataAccess
 
         public async Task<bool> Delete(int id)
         {
-            var filter = Builders<Billing>.Filter.Eq(c => c.id, id);
+            var filter = Builders<BillingDetail>.Filter.Eq(c => c.id, id);
             var result = await _collection.DeleteOneAsync(filter);
             return (result.DeletedCount == 1);
         }
@@ -38,7 +38,7 @@ namespace DataAccess
         {
             try
             {
-                var billing = (Billing) entity;
+                var billing = (BillingDetail) entity;
                 await _collection.InsertOneAsync(billing);
                 return true;
             }
@@ -57,11 +57,13 @@ namespace DataAccess
 
         public async Task<bool> Update(int id, object c)
         {
-            var billing  = (Billing) c;
-            var filter = Builders<Billing>.Filter.Eq(c => c.id, id);
-            var update = Builders<Billing>.Update
-                .Set(c => c.Name, billing.Name)
-                .Set(c => c.State, billing.State);
+            var billing  = (BillingDetail) c;
+            var filter = Builders<BillingDetail>.Filter.Eq(c => c.id, id);
+            var update = Builders<BillingDetail>.Update
+                .Set(c => c.id, billing.id)
+                .Set(c => c.IdBilling, billing.IdBilling)
+                .Set(c => c.IdProduct, billing.IdProduct)
+                .Set(c => c.Price, billing.Price);
             var result = await _collection.UpdateOneAsync(filter, update);
             return (result.ModifiedCount == 1);
         }
