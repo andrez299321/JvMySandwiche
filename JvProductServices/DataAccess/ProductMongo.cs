@@ -69,7 +69,8 @@ namespace DataAccess
                 .Set(c => c.Name, Product.Name)
                 .Set(c => c.Description, Product.Description)
                 .Set(c => c.Price, Product.Price)
-                .Set(c => c.State, Product.State);
+                .Set(c => c.State, Product.State)
+                .Set(c => c.Image, Product.Image);
             var result = await _collection.UpdateOneAsync(filter, update);
             return (result.ModifiedCount == 1);
         }

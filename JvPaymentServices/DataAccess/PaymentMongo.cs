@@ -1,14 +1,13 @@
 ﻿using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using DataAccess.Entity;
 using InfraestructureContracts.DataAccessContract;
 using DataAccess.Base;
 using Utils.EnumResourse;
 using Microsoft.Extensions.Options;
-using Utils.GlobalEntity;
+using EntitysServices.Dto;
+using EntitysServices.GlobalEntity;
 
 namespace DataAccess
 {

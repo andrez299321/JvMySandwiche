@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using ContractsBusiness;
 using EntitysServices;
+using EntitysServices.ExternalServices;
+using RestSharp;
 
 namespace JvAutenticacionServices.Controllers
 {
@@ -16,16 +18,16 @@ namespace JvAutenticacionServices.Controllers
             _payment = payment;
         }
 
-        /// <summary>
-        /// Authenticates the specified authentication information.
-        /// </summary>
-        /// <param name="authInfo">The authentication information.</param>
-        /// <returns></returns>
+
         [HttpPost]
         [Route("CreatePayment")]
-        public IActionResult CreatePayment([FromBody] PaymentRequest payment)
+        public IActionResult CreatePayment([FromBody] CaptureAndAuthorize payment)
         {
+
             return Ok(_payment.CreatePayment(payment));
         }
+
+      
+
     }
 }

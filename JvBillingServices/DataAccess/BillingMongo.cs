@@ -48,10 +48,15 @@ namespace DataAccess
             }
         }
 
-        public async Task<IEnumerable<object>> Get()
+        public List<object> Get()
         {
-            var client = await _collection.Find(_ => true).ToListAsync();
-            return client;
+            var task = _collection.Find(_ => true).ToListAsync().GetAwaiter().GetResult();
+            var result = new List<object>();
+            foreach (var item in task)
+            {
+                result.Add(item);
+            }
+            return result;
         }
         
 
@@ -70,6 +75,9 @@ namespace DataAccess
             return (result.ModifiedCount == 1);
         }
 
-        
+        public List<object> GetDetail(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,7 +8,8 @@ namespace InfraestructureContracts.DataAccessContract
     public interface IMongo
     {
         Task<Object> Get(int id);
-        Task<IList<Object>> Get();
+        List<Object> Get();
+        List<Object> GetDetail(int id);
         Task<bool> Update(int id, Object client);
         Task<bool> Delete(int id);
         Task<bool> Create(Object id);

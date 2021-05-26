@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using EntitysServices;
+using EntitysServices.ExternalServices;
+
 namespace ContractsBusiness
 {
     public interface IPaymentBL
     {
-        ResponseBase CreatePayment(PaymentRequest payment);
+        ResponseBase CreatePayment(CaptureAndAuthorize payment);
 
         ResponseBase DeletePayment(int id);
 

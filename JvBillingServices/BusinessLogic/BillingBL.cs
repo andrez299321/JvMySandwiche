@@ -26,9 +26,10 @@ namespace LogicsBusiness
 
         public ResponseBase CreateBilling(BillingRequest billing)
         {
+            int id = _DataAccessMongo.Get().Count + 1;
             var billingDto = new Billing()
             {
-                id = billing.Id,
+                id = id,
                 Idclient = billing.Idclient,
                 IdPayment = billing.IdPayment,
                 State = billing.State,
@@ -47,7 +48,7 @@ namespace LogicsBusiness
                 {
                     IdProduct = item.IdProduct,
                     Price = item.Price,
-                    IdBilling = billing.Id
+                    IdBilling = id
                 };
                 var resultDetail = _DataAccessDetailMongo.Create(billingDetailDto).GetAwaiter().GetResult();
                 if (!result)
@@ -60,22 +61,29 @@ namespace LogicsBusiness
         }
         public ResponseBase GetBilling(int id)
         {
-
             var bill = (Billing)_DataAccessMongo.Get(id).GetAwaiter().GetResult();
-
             var result = new BillingRequest()
             {
+                Id = bill.id,
                 Idclient = bill.Idclient,
                 IdPayment = bill.IdPayment,
                 State = bill.State,
                 TypeToDelivery = bill.TypeToDelivery,
                 TypeToPayment = bill.TypeToPayment
             };
-            var billDetail = (List<BillingDetail>)_DataAccessDetailMongo.Get(id).GetAwaiter().GetResult();
+            var billDetail = _DataAccessDetailMongo.GetDetail(id);
 
-            foreach (var item  in billDetail)
+            List<BillingProductRequest> obj = new List<BillingProductRequest>();
+
+            foreach (BillingDetail item  in billDetail)
             {
-
+                var aux = new BillingProductRequest()
+                {
+                    IdProduct = item.IdProduct,
+                    Price = item.Price
+                };
+                obj.Add(aux);
+                result.products = obj;
             }
 
             return ResponseSuccess("OK",result);
@@ -83,8 +91,36 @@ namespace LogicsBusiness
 
         public ResponseBase GetBillingAll()
         {
-            var result = _DataAccessMongo.Get().GetAwaiter().GetResult();
-            return ResponseSuccess("OK", result);
+            List<BillingRequest> response = new List<BillingRequest>();
+            List<object> bills = _DataAccessMongo.Get();
+            foreach (Billing bill in bills)
+            {
+                var result = new BillingRequest()
+                {
+                    Id = bill.id,
+                    Idclient = bill.Idclient,
+                    IdPayment = bill.IdPayment,
+                    State = bill.State,
+                    TypeToDelivery = bill.TypeToDelivery,
+                    TypeToPayment = bill.TypeToPayment
+                };
+                List<object> billsDetail = _DataAccessDetailMongo.Get();
+
+                List<BillingProductRequest> obj = new List<BillingProductRequest>();
+
+                foreach (BillingDetail item in billsDetail)
+                {
+                    var aux = new BillingProductRequest()
+                    {
+                        IdProduct = item.IdProduct,
+                        Price = item.Price
+                    };
+                    obj.Add(aux);
+                    result.products = obj;
+                }
+                response.Add(result);
+            }
+            return ResponseSuccess("OK", response);
         }
 
         public ResponseBase UpdateStateBilling(int id, BillingRequest billing)

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccess.Entity
+namespace EntitysServices.GlobalEntity
 {
-    public class Payment : DTOBase
+    public class Connections
     {
+        public string Endpoint { get; set; } 
         public string Name { get; set; }
-        public bool State { get; set; }
+
     }
 }

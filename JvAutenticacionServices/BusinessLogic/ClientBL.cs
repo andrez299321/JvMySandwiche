@@ -25,8 +25,9 @@ namespace LogicsBusiness
 
         public ResponseBase CreateUser(ClientRequest client)
         {
+            int id = _DataAccessMongo.Get().Count + 1;
             var result = _DataAccessMongo.Create(new Client() { 
-                id =client.Id,
+                id = id,
                 Identification = client.Identification,
                 Name = client.Name,
                 LastName = client.LastName,

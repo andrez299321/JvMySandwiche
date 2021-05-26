@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EntitysServices.GlobalEntity;
 using Utils.EnumResourse;
-using Utils.GlobalEntity;
 
 namespace InfraestructureContracts.DataAccessContract
 {

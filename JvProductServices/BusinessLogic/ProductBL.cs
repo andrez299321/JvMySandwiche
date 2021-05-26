@@ -24,13 +24,14 @@ namespace LogicsBusiness
 
         public ResponseBase CreateProduct(ProductRequest product)
         {
-
+            int id = _DataAccessMongo.Get().GetAwaiter().GetResult().Count + 1;
             _DataAccessMongo.Create(new Product() { 
-                id = product.Id,
+                id = id,
                 Name = product.Name,
                 State = product.State,
                 Description = product.Description,
-                Price = product.Price
+                Price = product.Price,
+                Image =product.Image
             });
             return ResponseSuccess();
         }

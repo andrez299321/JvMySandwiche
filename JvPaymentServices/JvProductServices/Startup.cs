@@ -1,21 +1,17 @@
 using ContractsBusiness;
 using DataAccess;
+using EntitysServices.GlobalEntity;
 using InfraestructureContracts.DataAccessContract;
 using LogicsBusiness;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
+using InfraestructureContracts.ExternalServices;
+using ExternalServices;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Utils.GlobalEntity;
 
 namespace JvAutenticacionServices
 {
@@ -77,7 +73,7 @@ namespace JvAutenticacionServices
         private void DependencyExternalServices(IServiceCollection services)
         {
 
-            /*services.AddTransient<IWsCerSaludExternalServices, WsCerSaludExternalServices>();*/
+            services.AddTransient<IPaymentExternalServices, PaymentExternalServices>();
             
         }
 
@@ -89,7 +85,7 @@ namespace JvAutenticacionServices
 
         private void DependencySettings(IServiceCollection services)
         {
-            services.Configure<Connections>(opt => Configuration.GetSection("Connections").Bind(opt));
+            services.Configure<List<Connections>>(opt => Configuration.GetSection("Connections").Bind(opt));
             services.Configure<SecretSetting>(Configuration);
 
         }
