@@ -15,10 +15,10 @@ namespace DataAccess.Base
 
         private readonly IMongoDatabase _database;
 
-        public MongoBase(EnumMongo name, IOptions<SecretSetting> options)
+        public MongoBase(EnumMongo name, SecretSetting options)
         {
             string databaseName = Enum.GetName(typeof(EnumMongo), name).ToString().ToLower();
-            var payment = new MongoClient(options.Value.MongoDB);
+            var payment = new MongoClient(options.MongoDB);
             _database = payment.GetDatabase(databaseName);
         }
 

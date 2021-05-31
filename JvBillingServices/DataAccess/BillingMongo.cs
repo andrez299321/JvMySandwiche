@@ -15,7 +15,7 @@ namespace DataAccess
 {
     public class BillingMongo : MongoBase<BillingRequest>, IMongo
     {
-        public BillingMongo(EnumMongo databaseName, IOptions<SecretSetting> options) : base(databaseName, options)
+        public BillingMongo(EnumMongo databaseName, SecretSetting options) : base(databaseName, options)
         {
             collectionMongo(nameof(Billing));
         }

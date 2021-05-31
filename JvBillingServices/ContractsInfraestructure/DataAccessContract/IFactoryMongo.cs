@@ -9,6 +9,6 @@ namespace InfraestructureContracts.DataAccessContract
 {
     public interface IFactoryMongo
     {
-        IMongo GetMongoObject(EnumMongo type, IOptions<SecretSetting> options);
+        IMongo GetMongoObject(EnumMongo type, SecretSetting options);
     }
 }

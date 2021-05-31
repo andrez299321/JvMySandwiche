@@ -68,9 +68,9 @@ namespace LogicsBusiness
 
             _DataAccessMongo.Create(new Payment() { 
                 idclient = payment.billing.Idclient,
-                state = response.transactionResponse.state,
-                transactionId = response.transactionResponse.transactionId,
-                transactionTime = response.transactionResponse.transactionTime,
+                state = response.transactionResponse?.state ?? "",
+                transactionId = response.transactionResponse?.transactionId ?? "",
+                transactionTime = response.transactionResponse?.transactionTime??"",
                 observation = response.code
             });
             int idpayment = _DataAccessMongo.Get().Count;
@@ -88,7 +88,7 @@ namespace LogicsBusiness
             bill.setBusAsync(output);
 
             BusAzure order = new BusAzure(_options.Value.Bus, EnumBusQueu.JvSalesOrderServices);
-            order.setBusAsync(output);
+            order.setBusAsync(paymen.billing.IdOrder.ToString());
         }
         public ResponseBase DeletePayment(int id)
         {

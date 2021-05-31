@@ -20,6 +20,13 @@ namespace LogicsBusiness
         public SalesOrderBL(IFactoryMongo factoryMongo, IOptions<SecretSetting> options)
         {
             _factoryMongo = factoryMongo;
+            _DataAccessMongo = _factoryMongo.GetMongoObject(EnumMongo.SalesOrderMongo, options.Value);
+            _DataAccessDetailMongo = _factoryMongo.GetMongoObject(EnumMongo.SalesOrderDetailMongo, options.Value);
+        }
+
+        public SalesOrderBL(IFactoryMongo factoryMongo, SecretSetting options)
+        {
+            _factoryMongo = factoryMongo;
             _DataAccessMongo = _factoryMongo.GetMongoObject(EnumMongo.SalesOrderMongo, options);
             _DataAccessDetailMongo = _factoryMongo.GetMongoObject(EnumMongo.SalesOrderDetailMongo, options);
         }

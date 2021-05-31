@@ -15,7 +15,7 @@ namespace DataAccess
 {
     public class SalesOrderMongo : MongoBase<SalesOrderRequest>, IMongo
     {
-        public SalesOrderMongo(EnumMongo databaseName, IOptions<SecretSetting> options) : base(databaseName, options)
+        public SalesOrderMongo(EnumMongo databaseName, SecretSetting options) : base(databaseName, options)
         {
             collectionMongo(nameof(SalesOrder));
         }

@@ -10,7 +10,7 @@ namespace DataAccess
 {
     public class FactoryMongo : IFactoryMongo
     {
-        public IMongo GetMongoObject(EnumMongo type, IOptions<SecretSetting> options) 
+        public IMongo GetMongoObject(EnumMongo type, SecretSetting options) 
         {
             switch (type) {
                 case EnumMongo.SalesOrderMongo :

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Utils.EnumResourse;
 
 namespace EntitysServices
 {
@@ -14,7 +15,7 @@ namespace EntitysServices
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool State { get; set; }
+        public EnumState State { get; set; }
         public SalesOrderDetailRequest Detail { get; set; }
     }
 }

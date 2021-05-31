@@ -20,6 +20,12 @@ namespace LogicsBusiness
         public BillingBL(IFactoryMongo factoryMongo, IOptions<SecretSetting> options)
         {
             _factoryMongo = factoryMongo;
+            _DataAccessMongo = _factoryMongo.GetMongoObject(EnumMongo.BillingMongo, options.Value);
+        }
+
+        public BillingBL(IFactoryMongo factoryMongo, SecretSetting options)
+        {
+            _factoryMongo = factoryMongo;
             _DataAccessMongo = _factoryMongo.GetMongoObject(EnumMongo.BillingMongo, options);
         }
 
