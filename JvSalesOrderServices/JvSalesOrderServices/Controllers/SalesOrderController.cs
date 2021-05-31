@@ -28,16 +28,27 @@ namespace JvAutenticacionServices.Controllers
             return Ok(_salesOrder.CreateSalesOrder(salesOrder));
         }
 
-        /// <summary>
-        /// Authenticates the specified authentication information.
-        /// </summary>
-        /// <param name="authInfo">The authentication information.</param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("CreateProductToSalesOrder")]
-        public IActionResult CreateProductToSalesOrder([FromBody] SalesOrderRequest salesOrder)
+
+        [HttpGet]
+        [Route("GetSalesOrder")]
+        public IActionResult GetSalesOrder(int id)
         {
-            return Ok(_salesOrder.CreateSalesOrder(salesOrder));
+            return Ok(_salesOrder.GetSalesOrder(id));
+        }
+
+
+        [HttpGet]
+        [Route("GetAllSalesOrder")]
+        public IActionResult GetAllSalesOrder()
+        {
+            return Ok(_salesOrder.GetAllSalesOrder());
+        }
+
+        [HttpDelete]
+        [Route("DeleteSalesOrder")]
+        public IActionResult DeleteSalesOrder(int id)
+        {
+            return Ok(_salesOrder.DeleteSalesOrder(id));
         }
     }
 }

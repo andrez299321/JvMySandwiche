@@ -57,7 +57,7 @@ namespace JvBillingServices
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "AppSalud Services");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Daes Services");
             });
 
 
@@ -99,7 +99,7 @@ namespace JvBillingServices
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "AppSalud Services",
+                    Title = "Daes Services",
                     Version = "v1"
                 });
 

@@ -7,6 +7,7 @@ using ContractsBusiness;
 using EntitysServices;
 using EntitysServices.ExternalServices;
 using RestSharp;
+using Utils;
 
 namespace JvAutenticacionServices.Controllers
 {
@@ -27,7 +28,7 @@ namespace JvAutenticacionServices.Controllers
             return Ok(_payment.CreatePayment(payment));
         }
 
-      
+
 
     }
 }

@@ -66,9 +66,30 @@ namespace LogicsBusiness
 
             CaptureAndAuthorizationResponse response = JsonConvert.DeserializeObject<CaptureAndAuthorizationResponse>(responsString);
 
+            _DataAccessMongo.Create(new Payment() { 
+                idclient = payment.billing.Idclient,
+                state = response.transactionResponse.state,
+                transactionId = response.transactionResponse.transactionId,
+                transactionTime = response.transactionResponse.transactionTime,
+                observation = response.code
+            });
+            int idpayment = _DataAccessMongo.Get().Count;
+            SendBus(idpayment, payment);
+
+
             return ResponseSuccess("OK", response);
         }
+        private void SendBus(int idpayment, CaptureAndAuthorize paymen) 
+        {
+            paymen.billing.IdPayment = idpayment;
 
+            string output = JsonConvert.SerializeObject(paymen.billing);
+            BusAzure bill = new BusAzure(_options.Value.Bus,EnumBusQueu.jvbillingservices);
+            bill.setBusAsync(output);
+
+            BusAzure order = new BusAzure(_options.Value.Bus, EnumBusQueu.JvSalesOrderServices);
+            order.setBusAsync(output);
+        }
         public ResponseBase DeletePayment(int id)
         {
             _DataAccessMongo.Delete(id);

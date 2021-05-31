@@ -14,5 +14,7 @@ namespace ContractsBusiness
 
         ResponseBase GetSalesOrder(int id);
         
+        ResponseBase GetAllSalesOrder();
+
     }
 }

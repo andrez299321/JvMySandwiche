@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Utils.EnumResourse
 {
-    public enum EnumMongo
+    public enum EnumBusQueu
     {
-        SalesOrderMongo =1,
-        SalesOrderDetailMongo =2
+        jvbillingservices,
+        JvSalesOrderServices,
+        JvInventaryServices
     }
 }

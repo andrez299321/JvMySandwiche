@@ -107,6 +107,8 @@ namespace EntitysServices
        // public string command { get; set; }
         //public Merchant merchant { get; set; }
         public Transaction transaction { get; set; }
+
+        public BillingRequest billing { get; set; }
     }
 
 

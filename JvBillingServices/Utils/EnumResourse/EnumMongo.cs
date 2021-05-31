@@ -6,7 +6,6 @@ namespace Utils.EnumResourse
 {
     public enum EnumMongo
     {
-        BillingMongo =1,
-        BillingDetailMongo = 2
+        BillingMongo =1
     }
 }

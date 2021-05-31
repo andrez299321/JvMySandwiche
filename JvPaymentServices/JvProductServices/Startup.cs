@@ -95,7 +95,7 @@ namespace JvAutenticacionServices
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "AppSalud Services",
+                    Title = "Daes Services",
                     Version = "v1"
                 });
 

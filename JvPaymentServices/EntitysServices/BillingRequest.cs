@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Utils.EnumResourse;
 
 namespace EntitysServices
 {
-    public class BillingRequest 
+    public class BillingRequest
     {
         public int Id { get; set; }
         public int Idclient { get; set; }

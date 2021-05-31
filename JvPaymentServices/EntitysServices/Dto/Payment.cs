@@ -6,7 +6,10 @@ namespace EntitysServices.Dto
 {
     public class Payment : DTOBase
     {
-        public string Name { get; set; }
-        public bool State { get; set; }
+        public string state { get; set; }
+        public int idclient { get; set; }
+        public string transactionId { get; set; }
+        public string transactionTime { get; set; }
+        public string observation { get; set; }
     }
 }

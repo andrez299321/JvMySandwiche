@@ -16,10 +16,12 @@ namespace LogicsBusiness
     {
         IFactoryMongo _factoryMongo;
         IMongo _DataAccessMongo;
+        IMongo _DataAccessDetailMongo;
         public SalesOrderBL(IFactoryMongo factoryMongo, IOptions<SecretSetting> options)
         {
             _factoryMongo = factoryMongo;
             _DataAccessMongo = _factoryMongo.GetMongoObject(EnumMongo.SalesOrderMongo, options);
+            _DataAccessDetailMongo = _factoryMongo.GetMongoObject(EnumMongo.SalesOrderDetailMongo, options);
         }
 
         public ResponseBase CreateSalesOrder(SalesOrderRequest salesOrder)
@@ -41,8 +43,17 @@ namespace LogicsBusiness
         }
         public ResponseBase GetSalesOrder(int id)
         {
-            _DataAccessMongo.Get(id);
-            return ResponseSuccess();
+            var response = _DataAccessMongo.Get(id).GetAwaiter().GetResult();
+
+            
+            return ResponseSuccess("OK",response);
+        }
+
+        public ResponseBase GetAllSalesOrder()
+        {
+            var response = _DataAccessMongo.Get().GetAwaiter().GetResult();
+
+            return ResponseSuccess("OK", response);
         }
     }
 }

@@ -47,20 +47,28 @@ namespace DataAccess
             }
         }
 
-        public async Task<IEnumerable<object>> Get()
+        public List<object> Get()
         {
-            var payment = await _collection.Find(_ => true).ToListAsync();
-            return payment;
+            var task = _collection.Find(_ => true).ToListAsync().GetAwaiter().GetResult();
+            var result = new List<object>();
+            foreach (var item in task)
+            {
+                result.Add(item);
+            }
+            return result;
         }
-        
+
 
         public async Task<bool> Update(int id, object c)
         {
             var payment  = (Payment) c;
             var filter = Builders<Payment>.Filter.Eq(c => c.id, id);
             var update = Builders<Payment>.Update
-                .Set(c => c.Name, payment.Name)
-                .Set(c => c.State, payment.State);
+                .Set(c => c.idclient, payment.idclient)
+                .Set(c => c.transactionId, payment.transactionId)
+                .Set(c => c.transactionTime, payment.transactionTime)
+                .Set(c => c.observation, payment.observation)
+                .Set(c => c.state, payment.state);
             var result = await _collection.UpdateOneAsync(filter, update);
             return (result.ModifiedCount == 1);
         }

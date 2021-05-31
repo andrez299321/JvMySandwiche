@@ -16,9 +16,7 @@ namespace DataAccess
                 case EnumMongo.BillingMongo :
                     return new BillingMongo(type, options);
                 break;
-                case EnumMongo.BillingDetailMongo:
-                    return new BillingDetailMongo(type, options);
-                break;
+             
                 default:
                     return null;
                     break;

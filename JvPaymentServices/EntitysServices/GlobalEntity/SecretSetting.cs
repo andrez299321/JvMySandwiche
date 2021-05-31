@@ -11,5 +11,6 @@ namespace EntitysServices.GlobalEntity
         public string ApiKey { get; set; }
         public string apiLogin { get; set; }
         public string accountId { get; set; }
+        public string Bus { get; set; }
     }
 }
